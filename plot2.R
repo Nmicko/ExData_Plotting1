@@ -12,17 +12,17 @@ data<-read.table("hpc.txt",header=T,sep=";",dec=".",colClasses = c('character', 
                 'numeric', 'numeric', 'numeric'),na.strings='?')
 
 
-data$DateTime <- strptime(paste(data$Date, data$Time),"%d/%m/%Y %H:%M:%S")
+data$DateTime <- strptime(paste(data$Date, data$Time), "%d/%m/%Y %H:%M:%S")
 
 data <- subset(data, 
                as.Date(DateTime) >= as.Date("2007-02-01") & 
                  as.Date(DateTime) <= as.Date("2007-02-02"))
 
 
-png("plot1.png", height=480, width=480)
+png("plot2.png", height=480, width=480)
 
 
-hist(data$Global_active_power, col='red', xlab = 'Global Active Power (kilowatts)',main = 'Global Active Power')
+plot(data$DateTime,data$Global_active_power,xlab="", ylab = 'Global Active Power (kilowatts)',type="l")
 
 
 dev.off()
